@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="detail">
+  <img src="{{item.ImageURL}}" class="detail-img" alt="{{item.Name}}">
+  <div>
+    <h1>{{item.Name}}</h1>
+    <h4>Category: {{item.CatName}}</h4>
+    <p>{{item.Description}}</p>
+    <h2>₹{{'%.2f'|format(item.Price)}}</h2>
+    <a href="/cart/add/{{item.ProductID}}" class="btn">Add to Cart</a>
+  </div>
+</div>
+
+{% endblock %}
