@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Welcome to MyShop</h1>
+<p>Explore categories and latest products.</p>
+
+<h2>Categories</h2>
+<div class="chips">
+{% for c in categories %}
+  <a class="chip" href="/products?category={{c.CategoryID}}">{{c.Name}}</a>
+{% endfor %}
+</div>
+
+<h2>Featured Products</h2>
+<div class="grid">
+{% for p in featured %}
+  <div class="card">
+    <img src="{{p.ImageURL}}" alt="{{p.Name}}">
+    <h3>{{p.Name}}</h3>
+    <p>₹{{'%.2f'|format(p.Price)}}</p>
+    <a href="/products/{{p.ProductID}}" class="btn">View</a>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}
