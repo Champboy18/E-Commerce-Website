@@ -1,0 +1,18 @@
+
+DROP TABLE IF EXISTS Products;
+DROP TABLE IF EXISTS Categories;
+
+CREATE TABLE Categories(
+    CategoryID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL
+);
+
+CREATE TABLE Products(
+    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
+    Description TEXT NOT NULL,
+    Price REAL NOT NULL,
+    ImageURL TEXT NOT NULL,
+    CategoryID INTEGER NOT NULL,
+    FOREIGN KEY(CategoryID) REFERENCES Categories(CategoryID)
+);
