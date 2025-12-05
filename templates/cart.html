@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Your Cart</h1>
+
+{% if products %}
+<table class="cart-table">
+  <tr><th>Product</th><th>Qty</th><th>Price</th><th>Total</th><th></th></tr>
+  {% for p in products %}
+  <tr>
+    <td><img src="{{p.image}}" width="60" alt="{{p.name}}"> {{p.name}}</td>
+    <td>{{p.qty}}</td>
+    <td>₹{{'%.2f'|format(p.price)}}</td>
+    <td>₹{{'%.2f'|format(p.amount)}}</td>
+    <td><a href="/cart/remove/{{p.id}}" class="btn-small">X</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>Total Amount: ₹{{'%.2f'|format(total)}}</h2>
+
+{% else %}
+<p>Your cart is empty.</p>
+{% endif %}
+
+{% endblock %}
